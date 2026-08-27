@@ -1,10 +1,12 @@
 import { Elysia } from 'elysia';
 import { db } from './db';
 import { sql } from 'drizzle-orm';
+import { usersRoute } from './routes/users-route';
 
 const port = process.env.PORT || 3000;
 
 const app = new Elysia()
+  .use(usersRoute)
   .get('/', () => ({
     message: 'Hello World from ElysiaJS with Bun and Drizzle ORM!',
     timestamp: new Date().toISOString()
